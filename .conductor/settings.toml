@@ -1,0 +1,11 @@
+"$schema" = "https://conductor.build/schemas/settings.repo.schema.json"
+
+[scripts]
+setup = "npm install"
+run_mode = "concurrent"
+
+[scripts.run.web]
+available_in = [ "local" ]
+command = "npm run dev --workspace apps/web -- --port $CONDUCTOR_PORT"
+default = true
+icon = "play"
