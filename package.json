@@ -1,14 +1,23 @@
 {
-  "name": "ai-template",
+  "name": "open-software-factory",
   "private": true,
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "engines": {
+    "node": ">=24"
+  },
   "scripts": {
-    "knip": "knip",
+    "dev": "npm run dev --workspace apps/web",
+    "build": "npm run build --workspaces --if-present",
+    "check:types": "npm run check:types --workspaces --if-present",
     "check:knip": "knip",
-    "check:all": "npm run check:knip"
+    "check:all": "npm run check:types && npm run check:knip"
   },
   "devDependencies": {
     "@types/node": "^24.10.1",
-    "knip": "^6.16.1",
+    "knip": "^6.34.0",
     "typescript": "^5.9.3"
   }
 }
