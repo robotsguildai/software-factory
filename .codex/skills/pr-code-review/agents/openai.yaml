@@ -1,0 +1,4 @@
+interface:
+  display_name: "PR Code Review"
+  short_description: "Strict maintainability PR review"
+  default_prompt: "Use $pr-code-review to run a strict maintainability review of the current PR."

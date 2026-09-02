@@ -1,0 +1,14 @@
+{
+  "name": "ai-template",
+  "private": true,
+  "scripts": {
+    "knip": "knip",
+    "check:knip": "knip",
+    "check:all": "npm run check:knip"
+  },
+  "devDependencies": {
+    "@types/node": "^24.10.1",
+    "knip": "^6.16.1",
+    "typescript": "^5.9.3"
+  }
+}
