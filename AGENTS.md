@@ -8,6 +8,7 @@
 - `packages/*` — shared code and the CLI (added as they are needed)
 - `tsconfig.base.json` — compiler options every workspace extends
 - `knip.json` — Knip workspace configuration, the only CI check
+- `.conductor/settings.toml` — Conductor setup and run scripts
 
 ## Commands
 
