@@ -7,17 +7,22 @@
     "build": "next build",
     "start": "next start",
     "check:types": "tsc --noEmit",
-    "db:migrate": "node --env-file-if-exists=.env db/migrate.ts"
+    "db:migrate": "drizzle-kit migrate",
+    "db:generate": "drizzle-kit generate"
   },
   "dependencies": {
+    "@better-auth/drizzle-adapter": "^1.7.2",
+    "better-auth": "^1.7.2",
+    "drizzle-orm": "^0.45.2",
     "next": "^16.3.4",
+    "pg": "^8.23.0",
     "react": "^19.2.8",
-    "react-dom": "^19.2.8",
-    "pg": "^8.23.0"
+    "react-dom": "^19.2.8"
   },
   "devDependencies": {
+    "@types/pg": "^8.23.1",
     "@types/react": "^19.2.18",
     "@types/react-dom": "^19.2.5",
-    "@types/pg": "^8.23.1"
+    "drizzle-kit": "^0.31.10"
   }
 }
