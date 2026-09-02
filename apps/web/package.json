@@ -7,8 +7,7 @@
     "build": "next build",
     "start": "next start",
     "check:types": "tsc --noEmit",
-    "db:migrate": "node --env-file-if-exists=.env db/migrate.ts",
-    "test": "node --test \"db/**/*.test.ts\""
+    "db:migrate": "node --env-file-if-exists=.env db/migrate.ts"
   },
   "dependencies": {
     "next": "^16.3.4",

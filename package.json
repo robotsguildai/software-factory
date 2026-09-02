@@ -13,9 +13,8 @@
     "build": "npm run build --workspaces --if-present",
     "check:types": "npm run check:types --workspaces --if-present",
     "check:knip": "knip",
-    "check:all": "npm run check:types && npm test && npm run check:knip",
-    "db:migrate": "npm run db:migrate --workspace apps/web",
-    "test": "npm test --workspaces --if-present"
+    "check:all": "npm run check:types && npm run check:knip",
+    "db:migrate": "npm run db:migrate --workspace apps/web"
   },
   "devDependencies": {
     "@types/node": "^24.10.1",

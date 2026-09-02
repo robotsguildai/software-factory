@@ -1,9 +1,9 @@
 import { readdir, readFile } from "node:fs/promises";
 import path from "node:path";
 import pg from "pg";
-import { pendingMigrations } from "./pending-migrations.ts";
 
 const migrationsDir = path.join(import.meta.dirname, "migrations");
+const migrationFilenamePattern = /^\d{4}_[a-z0-9_]+\.sql$/;
 
 const client = new pg.Client({ connectionString: process.env.DATABASE_URL });
 await client.connect();
@@ -14,7 +14,14 @@ await client.query(
 const appliedRows = await client.query<{ filename: string }>("select filename from schema_migrations");
 const applied = new Set(appliedRows.rows.map((row) => row.filename));
 
-for (const filename of pendingMigrations(await readdir(migrationsDir), applied)) {
+const files = (await readdir(migrationsDir)).filter((file) => file !== ".gitkeep").sort();
+const misnamed = files.filter((file) => !migrationFilenamePattern.test(file));
+if (misnamed.length > 0) {
+  throw new Error(`Migration files must look like 0001_create_users.sql, got: ${misnamed.join(", ")}`);
+}
+
+for (const filename of files) {
+  if (applied.has(filename)) continue;
   const sql = await readFile(path.join(migrationsDir, filename), "utf8");
   await client.query("begin");
   try {
