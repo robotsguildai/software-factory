@@ -9,3 +9,8 @@ available_in = [ "local" ]
 command = "npm run dev --workspace apps/web -- --port $CONDUCTOR_PORT"
 default = true
 icon = "play"
+
+[scripts.run.postgres]
+available_in = [ "local" ]
+command = "docker compose up"
+icon = "database"

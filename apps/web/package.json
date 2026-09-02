@@ -1,19 +1,23 @@
 {
   "name": "@open-software-factory/web",
   "private": true,
+  "type": "module",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "check:types": "tsc --noEmit"
+    "check:types": "tsc --noEmit",
+    "db:migrate": "node --env-file-if-exists=.env db/migrate.ts"
   },
   "dependencies": {
     "next": "^16.3.4",
     "react": "^19.2.8",
-    "react-dom": "^19.2.8"
+    "react-dom": "^19.2.8",
+    "pg": "^8.23.0"
   },
   "devDependencies": {
     "@types/react": "^19.2.18",
-    "@types/react-dom": "^19.2.5"
+    "@types/react-dom": "^19.2.5",
+    "@types/pg": "^8.23.1"
   }
 }
