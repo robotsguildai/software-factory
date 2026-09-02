@@ -1,16 +1,12 @@
+import { drizzleAdapter } from "@better-auth/drizzle-adapter";
 import { betterAuth } from "better-auth";
 import { nextCookies } from "better-auth/next-js";
-import pg from "pg";
-
-function requiredEnv(name: string): string {
-  const value = process.env[name];
-  if (!value) throw new Error(`Missing environment variable ${name}`);
-  return value;
-}
+import { db } from "@/db/client";
+import { requiredEnv } from "@/env/required-env";
 
 export const auth = betterAuth({
   baseURL: requiredEnv("APP_URL"),
-  database: new pg.Pool({ connectionString: requiredEnv("DATABASE_URL") }),
+  database: drizzleAdapter(db, { provider: "pg" }),
   socialProviders: {
     github: {
       clientId: requiredEnv("GITHUB_CLIENT_ID"),

@@ -67,7 +67,7 @@ Out of scope for v1: blueprints, phases, test cases, feedback, themes, skills, r
 - **Self-hosted everything.** One VPS, Docker compose with Next.js, Postgres, and a TLS proxy.
 - **Auth**: Better Auth with Google, GitHub, passkeys, and the `@better-auth/mcp` plugin so the app is an OAuth 2.1 server for MCP clients. Magic link deferred until SMTP is chosen. Sign in with ChatGPT deferred until OpenAI opens it.
 - **CLI auth**: personal access token via Better Auth's API key plugin.
-- **Data**: Postgres, raw SQL, numbered migration files applied by a small runner that records applied files.
+- **Data**: Postgres through Drizzle. Tables are declared in TypeScript under `apps/web/src/db/schema`, one file per domain, with explicit snake_case column names, so the current schema is readable in one place. `drizzle-kit generate` derives numbered SQL migrations that are reviewed in pull requests and applied with `drizzle-kit migrate`. Never `drizzle-kit push`.
 - **API**: REST under `/api/v1` with zod schemas in a shared package. The CLI and MCP tools are thin wrappers over the same handlers.
 - **MCP**: route handler inside the Next.js app, MCP TypeScript SDK v2, streamable HTTP.
 - **Documents**: markdown stored as text everywhere. CodeMirror 6 editor with preview. No rich-text editor in v1.
