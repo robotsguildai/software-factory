@@ -10,14 +10,15 @@
     "db:migrate": "node --env-file-if-exists=.env db/migrate.ts"
   },
   "dependencies": {
+    "better-auth": "^1.7.2",
     "next": "^16.3.4",
+    "pg": "^8.23.0",
     "react": "^19.2.8",
-    "react-dom": "^19.2.8",
-    "pg": "^8.23.0"
+    "react-dom": "^19.2.8"
   },
   "devDependencies": {
+    "@types/pg": "^8.23.1",
     "@types/react": "^19.2.18",
-    "@types/react-dom": "^19.2.5",
-    "@types/pg": "^8.23.1"
+    "@types/react-dom": "^19.2.5"
   }
 }

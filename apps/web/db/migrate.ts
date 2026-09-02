@@ -14,7 +14,7 @@ await client.query(
 const appliedRows = await client.query<{ filename: string }>("select filename from schema_migrations");
 const applied = new Set(appliedRows.rows.map((row) => row.filename));
 
-const files = (await readdir(migrationsDir)).filter((file) => file !== ".gitkeep").sort();
+const files = (await readdir(migrationsDir)).sort();
 const misnamed = files.filter((file) => !migrationFilenamePattern.test(file));
 if (misnamed.length > 0) {
   throw new Error(`Migration files must look like 0001_create_users.sql, got: ${misnamed.join(", ")}`);
